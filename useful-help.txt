@@ -1,0 +1,18 @@
+public List<CMMDto> getByCmmPartId(int partNo) {
+		
+		List<CMMDto> cmmDtos = new ArrayList<>();
+		List<CMM> cmmList = cmmRepository.findByCmmPartId(partNo);
+		for (CMM cmm : cmmList) {
+
+			CMMDto cmmDto = mapper.map(cmm, CMMDto.class);
+			List<CMMDetailsDto> cmmDetailsDtos = new ArrayList<>();
+			List<CMMDetails> cmmDetailsList = cmm.getCmmDetailsList();
+			for (CMMDetails cmmDetails : cmmDetailsList) {
+				CMMDetailsDto cmmDetailsDto = mapper.map(cmmDetails, CMMDetailsDto.class);
+				cmmDetailsDtos.add(cmmDetailsDto);
+			}
+			cmmDto.setCmmDetailsDtos(cmmDetailsDtos);
+			cmmDtos.add(cmmDto);
+		}
+		return cmmDtos;
+	}
