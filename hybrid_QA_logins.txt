@@ -1,0 +1,20 @@
+>superadmin"        "Super Admin"        "Super Admin User"
+>"e486"        "CAQE Admin"        "A Vijayakumar"
+>"cqao"        "CQAO"        "Cmde Vivek Aggarwal"
+>"51285F"        "JCQAO"        "Capt. M. N. Rajiv"
+>"51958K"        "DCQAO"        "Cdr. Sree Harsha S"
+>"51857F"        "DCQAO"        "Cdr. Sujit Kumar"
+>"a358121"        "ACQAO"        "Sunil Kumar"
+------------------------------------------------------------------
+>"194710Z"        "Inspector"        "Bijender Singh"
+>"195116Y"        "Inspector"        "Rajesh Jhajharia"
+--------------------wrong credentials------------------------------
+
+>"e2379"        "Inspector"        "Dominic Britto T"
+>"e555"        "Inspector"        "P Srinivas"
+>"e2382"        "Inspector"        "Mahesh Solapur"
+>"ns1"        "SBU Admin"        "NS1"
+>"adsnsbu"        "SBU Admin"        "ADSN"
+>"bemluser"       "firmadmin"
+
+pass- Admin@123
