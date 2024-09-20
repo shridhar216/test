@@ -17,3 +17,37 @@ public List<CMMDto> getByCmmPartId(int partNo) {
 		return cmmDtos;
 	}
     //
+
+
+	@GetMapping("/getByCmmPartId/{partNo}")
+    public ResponseEntity<List<CMMDto>> getByCmmPartId(@PathVariable String partNo){
+    	try {
+    		List<CMMDto> cmmDto = cmmService.getByCmmPartId(partNo);
+    		System.out.println(cmmDto);
+    		return ResponseEntity.ok(cmmDto);
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    		return ResponseEntity.internalServerError().body(Collections.emptyList());
+    	}
+    }
+    
+    @GetMapping("/getTestResult/{fromDate}/{toDate}")
+    // public ResponseEntity<List<CMMDto>> getTestResult(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate, @PathVariable @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) LocalDate toDate){
+    public ResponseEntity<List<CMMDto>> getTestResult(@PathVariable String fromDate, @PathVariable String toDate){	
+    	try {
+    	 List <CMMDto> cmmDto = cmmService.getTestResult(fromDate, toDate);
+    	 return ResponseEntity.ok(cmmDto);
+    	 
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    		return ResponseEntity.internalServerError().body(Collections.emptyList());
+    	}
+
+		///
+
+
+		@Query(value = "SELECT * FROM beml.cmm AS cmm WHERE cmm.part_no = :partNo", nativeQuery = true)
+	List<CMM> findByCmmPartId(@Param("partNo") String partNo);
+	
+	@Query(value = "SELECT cmm.measuremen_date, cmmd.characteristic AS label, cmmd.actual, cmmd.nominal, cmmd.upper_tol, cmmd.lower_tol, cmmd.deviation from beml.cmm AS cmm INNER JOIN beml.cmm_details AS cmmd ON cmm.test_id=cmmd.cmm_id WHERE cmm.measuremen_date BETWEEN :fromDate AND :toDate ORDER BY label ")
+	List<CMM> getTestResult(@Param("fromDate") String fromDate, @Param("toDate") String toDate);
